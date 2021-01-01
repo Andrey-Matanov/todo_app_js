@@ -1,36 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png"
+        />
+        <title>Frontend Mentor | Todo app</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles/stylesheet.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <section class="heading">
+                <h1 class="heading">Todo</h1>
+                <button class="theme">Theme</button>
+            </section>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
+            <section class="add_todo">
+                <input
+                    class="new_todo_input"
+                    type="text"
+                    placeholder="Create a new todo..."
+                />
+                <button class="add_todo_button">Add new todo</button>
+            </section>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+            <section class="todo_list">
+                <div class="todos"></div>
+                <div class="todo_list__buttons">
+                    <p class="items_left">
+                        <span class="not_completed_amount">0</span>
+                        <span class="items_text">items</span> left
+                    </p>
+                    <button class="clear_completed_button">
+                        Clear Completed
+                    </button>
+                    <button class="restore_default_button">
+                        Restore Default Todos
+                    </button>
+                </div>
+            </section>
 
-  Todo
+            <section class="todos_categories">
+                <button class="all_todos_button">All</button>
+                <button class="active_todos_button">Active</button>
+                <button class="completed_todos_button">Completed</button>
+            </section>
 
-  <!-- Add dynamic number --> items left
+            <section class="drag_and_drop">
+                Drag and drop to reorder list
+            </section>
 
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+            <section class="attribution">
+                Challenge by
+                <a
+                    href="https://www.frontendmentor.io?ref=challenge"
+                    target="_blank"
+                    >Frontend Mentor</a
+                >. Coded by <a href="#">Your Name Here</a>.
+            </section>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+        <script src="./scripts/index.js" type="module"></script>
+    </body>
 </html>
