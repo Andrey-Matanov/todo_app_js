@@ -1,0 +1,26 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    background-color: #eeeeee;
+}
+
+section {
+    padding: 20px;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.completed {
+    text-decoration: line-through;
+}
