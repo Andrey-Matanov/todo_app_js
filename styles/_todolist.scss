@@ -1,14 +1,19 @@
+.title {
+    color: $veryDarkGrayishBlue;
+    padding-left: 20px;
+}
+
 .todo_list {
     padding-bottom: 30px;
 
     &__empty {
         text-align: center;
         text-transform: uppercase;
-        line-height: 247px;
+        line-height: 213px;
     }
 
     &__container {
-        height: 353px;
+        height: 313px;
         background-color: white;
         border-radius: 5px;
         display: flex;
@@ -32,6 +37,11 @@
 
         &__button {
             width: calc(100% / 3);
+            color: $darkGrayishBlue;
+
+            &:hover {
+                color: $veryDarkGrayishBlue;
+            }
         }
     }
 }
@@ -40,6 +50,7 @@
     display: flex;
     justify-content: space-between;
     padding: 15px 15px 15px 20px;
+    cursor: pointer;
 
     &_dnd_zone {
         border-bottom: 1px solid hsl(236, 33%, 92%);
@@ -60,10 +71,6 @@
     overflow-y: auto;
 }
 
-.title {
-    padding-left: 20px;
-}
-
 .todo_dnd_zone__over {
     border-radius: 5px;
     background-color: hsl(233, 11%, 84%);
@@ -77,14 +84,27 @@
     &__button {
         padding: 10px 0;
         width: calc(100% / 3);
+        color: $darkGrayishBlue;
+        font-weight: 700;
 
         &:hover {
-            background-color: gray;
+            color: $veryDarkGrayishBlue;
+        }
+
+        &__selected {
+            color: $brightBlue;
         }
     }
 }
 
 .items_left {
+    font-size: 12px;
     text-align: center;
+    color: $darkGrayishBlue;
     padding-bottom: 10px;
+}
+
+.completed {
+    color: $lightGrayishBlue;
+    text-decoration: line-through;
 }

@@ -32,6 +32,7 @@ body {
 button {
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 input {
@@ -47,10 +48,6 @@ button {
 .wrapper {
   width: 500px;
   margin: 0 auto;
-}
-
-.completed {
-  text-decoration: line-through;
 }
 
 svg {
@@ -173,6 +170,7 @@ svg {
   padding: 15px 15px 15px 60px;
   border-radius: 5px;
   border: none;
+  color: #484b6a;
 }
 
 .new_todo_input__before {
@@ -192,6 +190,11 @@ svg {
   border: 1px solid #bbc1e1;
 }
 
+.title {
+  color: #484b6a;
+  padding-left: 20px;
+}
+
 .todo_list {
   padding-bottom: 30px;
 }
@@ -199,11 +202,11 @@ svg {
 .todo_list__empty {
   text-align: center;
   text-transform: uppercase;
-  line-height: 247px;
+  line-height: 213px;
 }
 
 .todo_list__container {
-  height: 353px;
+  height: 313px;
   background-color: white;
   border-radius: 5px;
   display: -webkit-box;
@@ -242,6 +245,11 @@ svg {
 
 .todo_list__configuration__button {
   width: calc(100% / 3);
+  color: #9394a5;
+}
+
+.todo_list__configuration__button:hover {
+  color: #484b6a;
 }
 
 .todo {
@@ -252,6 +260,7 @@ svg {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 15px 15px 15px 20px;
+  cursor: pointer;
 }
 
 .todo_dnd_zone {
@@ -276,10 +285,6 @@ svg {
   overflow-y: auto;
 }
 
-.title {
-  padding-left: 20px;
-}
-
 .todo_dnd_zone__over {
   border-radius: 5px;
   background-color: #d2d3db;
@@ -298,15 +303,38 @@ svg {
 .todos_categories__button {
   padding: 10px 0;
   width: calc(100% / 3);
+  color: #9394a5;
+  font-weight: 700;
 }
 
 .todos_categories__button:hover {
-  background-color: gray;
+  color: #484b6a;
+}
+
+.todos_categories__button__selected {
+  color: #3a7bfd;
 }
 
 .items_left {
+  font-size: 12px;
   text-align: center;
+  color: #9394a5;
   padding-bottom: 10px;
+}
+
+.completed {
+  color: #d2d3db;
+  text-decoration: line-through;
+}
+
+.dnd {
+  padding-bottom: 30px;
+}
+
+.dnd__text {
+  font-size: 13px;
+  text-align: center;
+  color: #9394a5;
 }
 
 .footer {

@@ -1,0 +1,9 @@
+.dnd {
+    padding-bottom: 30px;
+
+    &__text {
+        font-size: 13px;
+        text-align: center;
+        color: $darkGrayishBlue;
+    }
+}

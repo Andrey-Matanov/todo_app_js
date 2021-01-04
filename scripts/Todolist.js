@@ -8,12 +8,21 @@ export default class Todolist {
         }
         this.currentTodos = this.todos;
         this.currentTodosCategory = 'All';
+        this.allCategoryWasInFocus = false;
 
         this.renderTodos();
     }
 
     setCurrentTodosCategory = (event) => {
         this.currentTodosCategory = event.target.innerText;
+
+        document
+            .querySelectorAll('.todos_categories__button')
+            .forEach((button) =>
+                button.classList.remove('todos_categories__button__selected')
+            );
+
+        event.target.classList.add('todos_categories__button__selected');
 
         this.renderTodos();
     };
@@ -154,6 +163,11 @@ export default class Todolist {
         todosCategoriesButtons.forEach((todo) =>
             todo.addEventListener('click', this.setCurrentTodosCategory)
         );
+
+        if (!this.allCategoryWasInFocus) {
+            todosCategoriesButtons[0].focus();
+            this.allCategoryWasInFocus = true;
+        }
     };
 
     dragAndDrop = () => {
@@ -197,7 +211,7 @@ export default class Todolist {
         this.setCurrentTodos();
 
         const todos = document.querySelector('.todos');
-        const notCompletedAmout = document.querySelector(
+        const notCompletedAmount = document.querySelector(
             '.not_completed_amount'
         );
         const itemsText = document.querySelector('.items_text');
@@ -220,10 +234,6 @@ export default class Todolist {
             }
         } else {
             this.currentTodos.forEach(({ id, title, completed }) => {
-                if (!completed) {
-                    notCompletedTodosAmount++;
-                }
-
                 todosHTML += `
                 <div class="todo_dnd_zone">
                     <div class="todo" id=${id}>
@@ -249,7 +259,11 @@ export default class Todolist {
             });
         }
 
-        notCompletedAmout.innerText = notCompletedTodosAmount;
+        this.todos.forEach((todo) => {
+            if (!todo.completed) notCompletedTodosAmount += 1;
+        });
+
+        notCompletedAmount.innerText = notCompletedTodosAmount;
         notCompletedTodosAmount === 1
             ? (itemsText.innerText = 'item')
             : (itemsText.innerText = 'items');

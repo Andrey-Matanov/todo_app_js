@@ -24,6 +24,7 @@ body {
 button {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 input {
@@ -39,10 +40,6 @@ button {
 .wrapper {
     width: 500px;
     margin: 0 auto;
-}
-
-.completed {
-    text-decoration: line-through;
 }
 
 svg {
