@@ -1,0 +1,90 @@
+.todo_list {
+    padding-bottom: 30px;
+
+    &__empty {
+        text-align: center;
+        text-transform: uppercase;
+        line-height: 247px;
+    }
+
+    &__container {
+        height: 353px;
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__other {
+        border-top: 2px solid gray;
+    }
+
+    &__information {
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__configuration {
+        display: flex;
+        padding: 0 15px 10px;
+
+        &__button {
+            width: calc(100% / 3);
+        }
+    }
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px 15px 20px;
+
+    &_dnd_zone {
+        border-bottom: 1px solid hsl(236, 33%, 92%);
+
+        &:last-child {
+            border: none;
+        }
+    }
+
+    &__information {
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.todos {
+    overflow-y: auto;
+}
+
+.title {
+    padding-left: 20px;
+}
+
+.todo_dnd_zone__over {
+    border-radius: 5px;
+    background-color: hsl(233, 11%, 84%);
+}
+
+.todos_categories {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__button {
+        padding: 10px 0;
+        width: calc(100% / 3);
+
+        &:hover {
+            background-color: gray;
+        }
+    }
+}
+
+.items_left {
+    text-align: center;
+    padding-bottom: 10px;
+}

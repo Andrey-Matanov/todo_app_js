@@ -18,56 +18,79 @@
         <link rel="stylesheet" href="./styles/stylesheet.css" />
     </head>
     <body>
-        <div class="wrapper">
-            <section class="heading">
-                <h1 class="heading">Todo</h1>
-                <button class="theme">Theme</button>
-            </section>
+        <div class="background">
+            <div class="wrapper">
+                <header class="header">
+                    <h1 class="header__heading">T O D O</h1>
+                    <button class="theme"></button>
+                </header>
 
-            <section class="add_todo">
-                <input
-                    class="new_todo_input"
-                    type="text"
-                    placeholder="Create a new todo..."
-                />
-                <button class="add_todo_button">Add new todo</button>
-            </section>
+                <section class="add_todo">
+                    <label class="new_todo_input__before"></label>
+                    <input
+                        class="new_todo_input"
+                        type="text"
+                        placeholder="Create a new todo..."
+                    />
+                </section>
 
-            <section class="todo_list">
-                <div class="todos"></div>
-                <div class="todo_list__buttons">
-                    <p class="items_left">
-                        <span class="not_completed_amount">0</span>
-                        <span class="items_text">items</span> left
-                    </p>
-                    <button class="clear_completed_button">
-                        Clear Completed
-                    </button>
-                    <button class="restore_default_button">
-                        Restore Default Todos
-                    </button>
-                </div>
-            </section>
+                <section class="todo_list">
+                    <div class="todo_list__container">
+                        <div class="todos"></div>
 
-            <section class="todos_categories">
-                <button class="all_todos_button">All</button>
-                <button class="active_todos_button">Active</button>
-                <button class="completed_todos_button">Completed</button>
-            </section>
-
-            <section class="drag_and_drop">
-                Drag and drop to reorder list
-            </section>
-
-            <section class="attribution">
-                Challenge by
-                <a
-                    href="https://www.frontendmentor.io?ref=challenge"
-                    target="_blank"
-                    >Frontend Mentor</a
-                >. Coded by <a href="#">Your Name Here</a>.
-            </section>
+                        <div class="todo_list__other">
+                            <div class="todo_list__information">
+                                <p class="items_left">
+                                    <span class="not_completed_amount">0</span
+                                    >&nbsp;active
+                                    <span class="items_text">items</span> left
+                                </p>
+                                <div class="todos_categories">
+                                    <button class="todos_categories__button">
+                                        All
+                                    </button>
+                                    <button class="todos_categories__button">
+                                        Active
+                                    </button>
+                                    <button class="todos_categories__button">
+                                        Completed
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="todo_list__configuration">
+                                <button
+                                    class="clear_completed_button todo_list__configuration__button"
+                                >
+                                    Clear Completed
+                                </button>
+                                <button
+                                    class="clear_todolist_button todo_list__configuration__button"
+                                >
+                                    Clear Todolist
+                                </button>
+                                <button
+                                    class="restore_default_button todo_list__configuration__button"
+                                >
+                                    Restore Default Todos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
+        <footer class="footer">
+            Challenge by&nbsp;
+            <a
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                >Frontend Mentor</a
+            >. Coded by&nbsp;<a
+                href="https://andrey-matanov.github.io/"
+                target="_blank"
+                >Andrew Matanov</a
+            >.
+        </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
         <script src="./scripts/index.js" type="module"></script>
     </body>

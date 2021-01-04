@@ -1,26 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
-    background-color: #eeeeee;
+    background-color: hsl(236, 33%, 92%);
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
-section {
-    padding: 20px;
+.background {
+    flex: 1;
+    background-image: url('../images/bg-desktop-light.jpg');
+    background-repeat: no-repeat;
 }
 
-.attribution {
-    font-size: 11px;
-    text-align: center;
+button {
+    background: none;
+    border: none;
 }
-.attribution a {
-    color: hsl(228, 45%, 44%);
+
+input {
+    font-size: 18px;
+}
+
+input,
+button {
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
 }
 
 .wrapper {
-    width: 1000px;
+    width: 500px;
     margin: 0 auto;
 }
 
 .completed {
     text-decoration: line-through;
+}
+
+svg {
+    pointer-events: none;
 }

@@ -1,0 +1,9 @@
+.header {
+    padding: 50px 0 30px;
+    display: flex;
+    justify-content: space-between;
+
+    &__heading {
+        color: white;
+    }
+}

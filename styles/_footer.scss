@@ -1,0 +1,15 @@
+.footer {
+    background-color: black;
+    max-width: 1440px;
+    height: 20px;
+    font-size: 11px;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer a {
+    color: hsl(228, 45%, 44%);
+}

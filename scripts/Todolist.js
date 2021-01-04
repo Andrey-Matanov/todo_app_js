@@ -40,21 +40,27 @@ export default class Todolist {
     };
 
     addTodo = (event) => {
-        event.preventDefault();
-        const input = document.querySelector('.new_todo_input');
+        if (event.keyCode === 13) {
+            event.preventDefault();
 
-        this.todos.push({
-            id: uuid.v4(),
-            title: input.value,
-            completed: false,
-        });
-        input.value = '';
+            const input = document.querySelector('.new_todo_input');
 
-        this.renderTodos();
+            this.todos.push({
+                id: uuid.v4(),
+                title: input.value,
+                completed: false,
+            });
+            input.value = '';
+
+            this.renderTodos();
+        }
     };
 
     removeTodo = (event) => {
         const id = event.target.dataset.id;
+        console.log(event.target);
+        console.log(this.todos);
+        console.log(id);
 
         this.todos = this.todos.filter((todo) => todo.id != id);
 
@@ -72,6 +78,12 @@ export default class Todolist {
 
     removeCompletedTodos = () => {
         this.todos = this.todos.filter((todo) => todo.completed === false);
+
+        this.renderTodos();
+    };
+
+    clearTodolist = () => {
+        this.todos = [];
 
         this.renderTodos();
     };
@@ -104,33 +116,25 @@ export default class Todolist {
     };
 
     addEventListeners = () => {
-        const addTodoButton = document.querySelector('.add_todo_button');
         const newTodoInput = document.querySelector('.new_todo_input');
         const completeTodoButtons = document.querySelectorAll('.todo');
         const removeCompletedButton = document.querySelector(
             '.clear_completed_button'
         );
+        const clearTodosButton = document.querySelector(
+            '.clear_todolist_button'
+        );
         const restoreDefaultTodosButton = document.querySelector(
             '.restore_default_button'
         );
-        const allTodosButton = document.querySelector('.all_todos_button');
-        const activeTodosButton = document.querySelector(
-            '.active_todos_button'
-        );
-        const completedTodosButton = document.querySelector(
-            '.completed_todos_button'
+        const todosCategoriesButtons = document.querySelectorAll(
+            '.todos_categories__button'
         );
 
-        newTodoInput.addEventListener('keydown', (e) => {
-            console.log(e);
-            if (e.keyCode === 13) {
-                this.addTodo;
-            }
-        });
-        addTodoButton.addEventListener('click', this.addTodo);
+        newTodoInput.addEventListener('keydown', this.addTodo);
 
         completeTodoButtons.forEach((todo) => {
-            const [checkbox, title, removeButton] = todo.children;
+            const [checkbox, removeButton] = todo.children;
             checkbox.addEventListener('click', this.markTodoAsCompleted);
             removeButton.addEventListener('click', this.removeTodo);
         });
@@ -140,19 +144,15 @@ export default class Todolist {
             this.removeCompletedTodos
         );
 
+        clearTodosButton.addEventListener('click', this.clearTodolist);
+
         restoreDefaultTodosButton.addEventListener(
             'click',
             this.restoreDefaultTodos
         );
 
-        allTodosButton.addEventListener('click', this.setCurrentTodosCategory);
-        activeTodosButton.addEventListener(
-            'click',
-            this.setCurrentTodosCategory
-        );
-        completedTodosButton.addEventListener(
-            'click',
-            this.setCurrentTodosCategory
+        todosCategoriesButtons.forEach((todo) =>
+            todo.addEventListener('click', this.setCurrentTodosCategory)
         );
     };
 
@@ -204,26 +204,50 @@ export default class Todolist {
         let todosHTML = '';
         let notCompletedTodosAmount = 0;
 
-        this.currentTodos.forEach(({ id, title, completed }) => {
-            if (!completed) {
-                notCompletedTodosAmount++;
-            }
-
-            todosHTML += `
-            <div class="todo_dnd_zone">
-                <div class="todo" id=${id}>
-                    <input
-                        class="complete_todo ${completed ? 'completed' : ''}"
-                        type="checkbox" 
-                        name="completed" 
-                        ${completed ? 'checked' : ''}
-                    />
-                    <p class="title">${title}</p>
-                    <button data-id=${id} class="remove_todo">X</button>
-                </div>
-            </div>
+        if (!this.todos.length) {
+            todosHTML = `
+            <h2 class="todo_list__empty">Todolist is currently empty</h2>
             `;
-        });
+        } else if (!this.currentTodos.length) {
+            if (this.currentTodosCategory == 'Active') {
+                todosHTML = `
+                <h2 class="todo_list__empty">No active todos</h2>
+                `;
+            } else {
+                todosHTML = `
+                <h2 class="todo_list__empty">No completed todos</h2>
+                `;
+            }
+        } else {
+            this.currentTodos.forEach(({ id, title, completed }) => {
+                if (!completed) {
+                    notCompletedTodosAmount++;
+                }
+
+                todosHTML += `
+                <div class="todo_dnd_zone">
+                    <div class="todo" id=${id}>
+                        <div class="todo__information">
+                            <input
+                                class="complete_todo ${
+                                    completed ? 'completed' : ''
+                                }"
+                                type="checkbox" 
+                                name="completed" 
+                                ${completed ? 'checked' : ''}
+                            />
+                        <p class="title ${
+                            completed ? 'completed' : ''
+                        }">${title}</p>
+                        </div>
+                        <button data-id=${id} class="remove_todo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                `;
+            });
+        }
 
         notCompletedAmout.innerText = notCompletedTodosAmount;
         notCompletedTodosAmount === 1

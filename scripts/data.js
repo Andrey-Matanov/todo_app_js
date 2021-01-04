@@ -7,7 +7,7 @@ const todos = [
     {
         id: uuid.v4(),
         title: 'Complete online JavaScript course',
-        completed: false,
+        completed: true,
     },
     {
         id: uuid.v4(),
@@ -22,7 +22,7 @@ const todos = [
     {
         id: uuid.v4(),
         title: 'Complete Todo App on Frontend Mentor',
-        completed: false,
+        completed: true,
     },
 ];
 
