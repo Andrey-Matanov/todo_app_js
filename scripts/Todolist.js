@@ -10,6 +10,7 @@ export default class Todolist {
         }
         this.currentTodos = this.todos;
         this.currentTodosCategory = 'All';
+        this.errorTimer = null;
 
         this.renderTodos();
     }
@@ -55,9 +56,7 @@ export default class Todolist {
 
             const input = document.querySelector('.add_todo_input');
 
-            console.log(this.wordToLowerCase(input.value));
-
-            if (input.value.length <= 36) {
+            if (this.validateInput(input.value)) {
                 this.todos.push({
                     id: uuid.v4(),
                     title: input.value,
@@ -65,20 +64,29 @@ export default class Todolist {
                 });
                 input.value = '';
 
-                console.log(this.todos);
                 this.renderTodos();
             }
         }
     };
 
-    wordToLowerCase = (word) => {
-        let result = word[0];
+    validateInput = (input) => {
+        const words = input.split(' ');
 
-        for (let i = 1; i < word.length; i++) {
-            result += word[i].toLowerCase();
+        for (let word of words) {
+            if (word.length > 63) {
+                clearTimeout(this.errorTimer);
+                const addTodoError = document.querySelector('.add_todo__error');
+
+                addTodoError.classList.add('add_todo__error__visible');
+                this.errorTimer = setTimeout(() => {
+                    addTodoError.classList.remove('add_todo__error__visible');
+                }, 5000);
+
+                return false;
+            }
         }
 
-        return result;
+        return true;
     };
 
     removeTodo = (event) => {

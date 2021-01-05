@@ -1,6 +1,18 @@
 .add_todo {
     display: flex;
+    flex-direction: column;
+    text-align: center;
     padding-bottom: 20px;
+
+    &__error {
+        color: $veryLightGrayishBlue;
+        visibility: hidden;
+        margin-bottom: 10px;
+
+        &__visible {
+            visibility: visible;
+        }
+    }
 
     &_input {
         width: 100%;

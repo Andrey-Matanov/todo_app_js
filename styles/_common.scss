@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+p {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
 .body {
     display: flex;
     min-height: 100vh;
