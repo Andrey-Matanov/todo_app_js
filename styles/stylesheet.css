@@ -272,6 +272,7 @@ svg {
 }
 
 .todo__information {
+  width: 100%;
   padding: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -357,5 +358,19 @@ svg {
 
 .footer a {
   color: #3e52a3;
+}
+
+@media (max-width: 520px) {
+  .wrapper {
+    padding: 0 20px;
+    max-width: 350px;
+    width: 100%;
+    font-size: 11px;
+  }
+  p,
+  input,
+  button {
+    font-size: 11px;
+  }
 }
 /*# sourceMappingURL=stylesheet.css.map */

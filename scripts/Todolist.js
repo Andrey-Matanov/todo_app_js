@@ -67,12 +67,8 @@ export default class Todolist {
 
     removeTodo = (event) => {
         const id = event.target.dataset.id;
-        console.log(event.target);
-        console.log(this.todos);
-        console.log(id);
 
         this.todos = this.todos.filter((todo) => todo.id != id);
-
         this.renderTodos();
     };
 
