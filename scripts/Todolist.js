@@ -1,3 +1,5 @@
+import changeTheme from './theme.js';
+
 export default class Todolist {
     constructor(todos) {
         if (localStorage.getItem('todos')) {
@@ -8,7 +10,6 @@ export default class Todolist {
         }
         this.currentTodos = this.todos;
         this.currentTodosCategory = 'All';
-        this.allCategoryWasInFocus = false;
 
         this.renderTodos();
     }
@@ -52,17 +53,32 @@ export default class Todolist {
         if (event.keyCode === 13) {
             event.preventDefault();
 
-            const input = document.querySelector('.new_todo_input');
+            const input = document.querySelector('.add_todo_input');
 
-            this.todos.push({
-                id: uuid.v4(),
-                title: input.value,
-                completed: false,
-            });
-            input.value = '';
+            console.log(this.wordToLowerCase(input.value));
 
-            this.renderTodos();
+            if (input.value.length <= 36) {
+                this.todos.push({
+                    id: uuid.v4(),
+                    title: input.value,
+                    completed: false,
+                });
+                input.value = '';
+
+                console.log(this.todos);
+                this.renderTodos();
+            }
         }
+    };
+
+    wordToLowerCase = (word) => {
+        let result = word[0];
+
+        for (let i = 1; i < word.length; i++) {
+            result += word[i].toLowerCase();
+        }
+
+        return result;
     };
 
     removeTodo = (event) => {
@@ -74,10 +90,11 @@ export default class Todolist {
 
     markTodoAsCompleted = (event) => {
         const title = event.target.parentNode.children[1].innerText;
-        const todo = this.todos.find((todo) => todo.title === title);
+        const todo = this.todos.find((todo) => {
+            return todo.title === title;
+        });
 
         todo.completed = !todo.completed;
-
         this.renderTodos();
     };
 
@@ -99,29 +116,8 @@ export default class Todolist {
         document.location.reload();
     };
 
-    swapTodos = (firstTodoId, secondTodoId) => {
-        let number1;
-        let number2;
-
-        for (let i = 0; i < this.todos.length; i++) {
-            if (this.todos[i].id == firstTodoId) {
-                number1 = i;
-            }
-
-            if (this.todos[i].id == secondTodoId) {
-                number2 = i;
-            }
-        }
-
-        const temp = this.todos[number1];
-        this.todos[number1] = this.todos[number2];
-        this.todos[number2] = temp;
-
-        this.renderTodos();
-    };
-
     addEventListeners = () => {
-        const newTodoInput = document.querySelector('.new_todo_input');
+        const newTodoInput = document.querySelector('.add_todo_input');
         const completeTodoButtons = document.querySelectorAll('.todo');
         const removeCompletedButton = document.querySelector(
             '.clear_completed_button'
@@ -139,8 +135,10 @@ export default class Todolist {
         newTodoInput.addEventListener('keydown', this.addTodo);
 
         completeTodoButtons.forEach((todo) => {
-            const [checkbox, removeButton] = todo.children;
+            const [todoInformation, removeButton] = todo.children;
+            const [checkbox, title] = todoInformation.children;
             checkbox.addEventListener('click', this.markTodoAsCompleted);
+            title.addEventListener('click', this.markTodoAsCompleted);
             removeButton.addEventListener('click', this.removeTodo);
         });
 
@@ -159,11 +157,6 @@ export default class Todolist {
         todosCategoriesButtons.forEach((todo) =>
             todo.addEventListener('click', this.setCurrentTodosCategory)
         );
-
-        if (!this.allCategoryWasInFocus) {
-            todosCategoriesButtons[0].focus();
-            this.allCategoryWasInFocus = true;
-        }
     };
 
     dragAndDrop = () => {
@@ -199,8 +192,28 @@ export default class Todolist {
                 const targetId = e.currentTarget.firstElementChild.id;
 
                 this.swapTodos(droppedElementId, targetId);
+                this.renderTodos();
             });
         }
+    };
+
+    swapTodos = (firstTodoId, secondTodoId) => {
+        let number1;
+        let number2;
+
+        for (let i = 0; i < this.todos.length; i++) {
+            if (this.todos[i].id == firstTodoId) {
+                number1 = i;
+            }
+
+            if (this.todos[i].id == secondTodoId) {
+                number2 = i;
+            }
+        }
+
+        const temp = this.todos[number1];
+        this.todos[number1] = this.todos[number2];
+        this.todos[number2] = temp;
     };
 
     renderTodos = () => {
@@ -267,6 +280,7 @@ export default class Todolist {
         todos.innerHTML = todosHTML;
         this.addEventListeners();
         this.dragAndDrop();
+        changeTheme();
         localStorage.setItem('todos', JSON.stringify(this.todos));
     };
 }

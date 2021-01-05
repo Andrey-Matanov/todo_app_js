@@ -1,29 +1,42 @@
 .add_todo {
     display: flex;
     padding-bottom: 20px;
-}
 
-.new_todo_input {
-    width: 100%;
-    padding: 15px 15px 15px 60px;
-    border-radius: 5px;
-    border: none;
-    color: $veryDarkGrayishBlue;
-}
+    &_input {
+        width: 100%;
+        padding: 15px 15px 15px 60px;
+        border-radius: 5px;
+        border: none;
+        color: $veryDarkGrayishBlue;
 
-.new_todo_input__before {
-    position: relative;
-}
+        &::placeholder {
+            color: $darkGrayishBlue;
+        }
 
-.new_todo_input__before::after {
-    position: absolute;
-    top: 12px;
-    left: 20px;
-    z-index: 100;
-    content: '';
-    display: inline-block;
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
-    border: 1px solid #bbc1e1;
+        &__before {
+            position: relative;
+        }
+
+        &__before::after {
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            z-index: 100;
+            content: '';
+            display: inline-block;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            border: 1px solid #bbc1e1;
+        }
+
+        &__dark {
+            background-color: $veryDarkDesaturatedBlue;
+            color: $lightGrayishBlueDarkHover;
+
+            &::placeholder {
+                color: $darkGrayishBlueDark;
+            }
+        }
+    }
 }

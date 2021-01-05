@@ -1,6 +1,10 @@
 .title {
     color: $veryDarkGrayishBlue;
     padding-left: 20px;
+
+    &__dark {
+        color: $lightGrayishBlueDark;
+    }
 }
 
 .todo_list {
@@ -19,10 +23,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-    }
 
-    &__other {
-        border-top: 2px solid gray;
+        &__dark {
+            background-color: $veryDarkDesaturatedBlue;
+        }
     }
 
     &__information {
@@ -53,7 +57,11 @@
     cursor: pointer;
 
     &_dnd_zone {
-        border-bottom: 1px solid hsl(236, 33%, 92%);
+        border-bottom: 1px solid $veryLightGrayishBlue;
+
+        &__dark {
+            border-color: $veryDarkGrayishBlueDarkSecond;
+        }
 
         &:last-child {
             border: none;
@@ -66,10 +74,20 @@
         display: flex;
         align-items: center;
     }
+
+    &__dark {
+        background-color: $veryDarkDesaturatedBlue;
+    }
 }
 
 .todos {
     overflow-y: auto;
+    border-bottom: 2px solid $lightGrayishBlue;
+    border-bottom-right-radius: 6px;
+
+    &__dark {
+        border-color: $lightGrayishBlueDark;
+    }
 }
 
 .todo_dnd_zone__over {
@@ -108,4 +126,8 @@
 .completed {
     color: $lightGrayishBlue;
     text-decoration: line-through;
+
+    &__dark {
+        color: $darkGrayishBlueDark;
+    }
 }

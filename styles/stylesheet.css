@@ -5,7 +5,7 @@
           box-sizing: border-box;
 }
 
-body {
+.body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,17 +16,13 @@ body {
           flex-direction: column;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
-  background-color: #e4e5f1;
+  background-color: #d2d3db;
   max-width: 1440px;
   margin: 0 auto;
 }
 
-.background {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  background-image: url("../images/bg-desktop-light.jpg");
-  background-repeat: no-repeat;
+.body__dark {
+  background-color: #161722;
 }
 
 button {
@@ -45,13 +41,25 @@ button {
   outline: none;
 }
 
+svg {
+  pointer-events: none;
+}
+
 .wrapper {
   width: 500px;
   margin: 0 auto;
 }
 
-svg {
-  pointer-events: none;
+.background {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-image: url("../images/bg-desktop-light.jpg");
+  background-repeat: no-repeat;
+}
+
+.background__dark {
+  background-image: url("../images/bg-desktop-dark.jpg");
 }
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
@@ -144,6 +152,41 @@ svg {
   }
 }
 
+.todos {
+  overflow-y: scroll;
+}
+
+.todos::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+.todos::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.todos::-webkit-scrollbar-thumb {
+  background-color: #d2d3db;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.todos__dark::-webkit-scrollbar-thumb {
+  background-color: #161722;
+}
+
+.todos__dark::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.todos__dark::-webkit-scrollbar-thumb {
+  background-color: #777a92;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
 .header {
   padding: 50px 0 30px;
   display: -webkit-box;
@@ -165,7 +208,7 @@ svg {
   padding-bottom: 20px;
 }
 
-.new_todo_input {
+.add_todo_input {
   width: 100%;
   padding: 15px 15px 15px 60px;
   border-radius: 5px;
@@ -173,11 +216,27 @@ svg {
   color: #484b6a;
 }
 
-.new_todo_input__before {
+.add_todo_input::-webkit-input-placeholder {
+  color: #9394a5;
+}
+
+.add_todo_input:-ms-input-placeholder {
+  color: #9394a5;
+}
+
+.add_todo_input::-ms-input-placeholder {
+  color: #9394a5;
+}
+
+.add_todo_input::placeholder {
+  color: #9394a5;
+}
+
+.add_todo_input__before {
   position: relative;
 }
 
-.new_todo_input__before::after {
+.add_todo_input__before::after {
   position: absolute;
   top: 12px;
   left: 20px;
@@ -190,9 +249,34 @@ svg {
   border: 1px solid #bbc1e1;
 }
 
+.add_todo_input__dark {
+  background-color: #25273c;
+  color: #e4e5f1;
+}
+
+.add_todo_input__dark::-webkit-input-placeholder {
+  color: #777a92;
+}
+
+.add_todo_input__dark:-ms-input-placeholder {
+  color: #777a92;
+}
+
+.add_todo_input__dark::-ms-input-placeholder {
+  color: #777a92;
+}
+
+.add_todo_input__dark::placeholder {
+  color: #777a92;
+}
+
 .title {
   color: #484b6a;
   padding-left: 20px;
+}
+
+.title__dark {
+  color: #cacde8;
 }
 
 .todo_list {
@@ -221,8 +305,8 @@ svg {
           justify-content: space-between;
 }
 
-.todo_list__other {
-  border-top: 2px solid gray;
+.todo_list__container__dark {
+  background-color: #25273c;
 }
 
 .todo_list__information {
@@ -267,6 +351,10 @@ svg {
   border-bottom: 1px solid #e4e5f1;
 }
 
+.todo_dnd_zone__dark {
+  border-color: #393a4c;
+}
+
 .todo_dnd_zone:last-child {
   border: none;
 }
@@ -282,8 +370,18 @@ svg {
           align-items: center;
 }
 
+.todo__dark {
+  background-color: #25273c;
+}
+
 .todos {
   overflow-y: auto;
+  border-bottom: 2px solid #d2d3db;
+  border-bottom-right-radius: 6px;
+}
+
+.todos__dark {
+  border-color: #cacde8;
 }
 
 .todo_dnd_zone__over {
@@ -328,6 +426,10 @@ svg {
   text-decoration: line-through;
 }
 
+.completed__dark {
+  color: #777a92;
+}
+
 .dnd {
   padding-bottom: 30px;
 }
@@ -365,12 +467,25 @@ svg {
     padding: 0 20px;
     max-width: 350px;
     width: 100%;
-    font-size: 11px;
   }
   p,
   input,
-  button {
-    font-size: 11px;
+  button,
+  .wrapper,
+  .items_left,
+  .dnd__text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 300px) {
+  p,
+  input,
+  button,
+  .wrapper,
+  .items_left,
+  .dnd__text {
+    font-size: 9px;
   }
 }
 /*# sourceMappingURL=stylesheet.css.map */

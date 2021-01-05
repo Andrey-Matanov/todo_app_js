@@ -4,21 +4,19 @@
     box-sizing: border-box;
 }
 
-body {
+.body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
-    background-color: hsl(236, 33%, 92%);
+    background-color: $lightGrayishBlue;
     max-width: 1440px;
     margin: 0 auto;
-}
 
-.background {
-    flex: 1;
-    background-image: url('../images/bg-desktop-light.jpg');
-    background-repeat: no-repeat;
+    &__dark {
+        background-color: $veryDarkBlue;
+    }
 }
 
 button {
@@ -37,11 +35,21 @@ button {
     outline: none;
 }
 
+svg {
+    pointer-events: none;
+}
+
 .wrapper {
     width: 500px;
     margin: 0 auto;
 }
 
-svg {
-    pointer-events: none;
+.background {
+    flex: 1;
+    background-image: url('../images/bg-desktop-light.jpg');
+    background-repeat: no-repeat;
+
+    &__dark {
+        background-image: url('../images/bg-desktop-dark.jpg');
+    }
 }
