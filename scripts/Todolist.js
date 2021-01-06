@@ -260,7 +260,8 @@ export default class Todolist {
                                     completed ? 'completed' : ''
                                 }"
                                 type="checkbox" 
-                                name="completed" 
+                                name="completed_input" 
+                                aria-labelledby="Complete Todo Checkbox"
                                 ${completed ? 'checked' : ''}
                             />
                         <p class="title ${
