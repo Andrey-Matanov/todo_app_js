@@ -388,10 +388,6 @@ svg {
           align-items: center;
 }
 
-.todo__dark {
-  background-color: #25273c;
-}
-
 .todos {
   overflow-y: auto;
   border-bottom: 2px solid #d2d3db;
