@@ -5,12 +5,6 @@
           box-sizing: border-box;
 }
 
-p {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-}
-
 .body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -307,9 +301,10 @@ svg {
 }
 
 .todo_list__empty {
+  line-height: 213px;
   text-align: center;
   text-transform: uppercase;
-  line-height: 213px;
+  color: #9394a5;
 }
 
 .todo_list__container {
@@ -481,7 +476,11 @@ svg {
           justify-content: center;
 }
 
-.footer a {
+.footer__text {
+  color: #9394a5;
+}
+
+.footer__link {
   color: #3e52a3;
 }
 

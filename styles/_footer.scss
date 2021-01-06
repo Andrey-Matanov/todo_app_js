@@ -8,8 +8,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
 
-.footer a {
-    color: hsl(228, 45%, 44%);
+    &__text {
+        color: $darkGrayishBlue;
+    }
+
+    &__link {
+        color: hsl(228, 45%, 44%);
+    }
 }

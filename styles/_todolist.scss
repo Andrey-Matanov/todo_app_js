@@ -12,9 +12,10 @@
     padding-bottom: 30px;
 
     &__empty {
+        line-height: 213px;
         text-align: center;
         text-transform: uppercase;
-        line-height: 213px;
+        color: $darkGrayishBlue;
     }
 
     &__container {
