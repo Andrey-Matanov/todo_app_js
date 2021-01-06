@@ -22,7 +22,11 @@
             <div class="wrapper">
                 <header class="header">
                     <h1 class="header__heading">T O D O</h1>
-                    <button class="theme">
+                    <button
+                        aria-label="Change website theme"
+                        title="Change website theme"
+                        class="theme"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="26"
@@ -47,7 +51,7 @@
                         class="add_todo_input"
                         type="text"
                         placeholder="Create a new todo..."
-                        aria-labelledby="Add Todo Input"
+                        aria-label="Add Todo Input"
                     />
                 </div>
 
@@ -64,30 +68,46 @@
                                 </p>
                                 <div class="todos_categories">
                                     <button
+                                        aria-label="Show all todos"
+                                        title="Show all todos"
                                         class="todos_categories__button todos_categories__button__selected"
                                     >
                                         All
                                     </button>
-                                    <button class="todos_categories__button">
+                                    <button
+                                        aria-label="Show active todos"
+                                        title="Show active todos"
+                                        class="todos_categories__button"
+                                    >
                                         Active
                                     </button>
-                                    <button class="todos_categories__button">
+                                    <button
+                                        aria-label="Show completed todos"
+                                        title="Show completed todos"
+                                        class="todos_categories__button"
+                                    >
                                         Completed
                                     </button>
                                 </div>
                             </div>
                             <div class="todo_list__configuration">
                                 <button
+                                    aria-label="Clear completed todos"
+                                    title="Clear completed todos"
                                     class="clear_completed_button todo_list__configuration__button"
                                 >
                                     Clear Completed
                                 </button>
                                 <button
+                                    aria-label="Clear todolist"
+                                    title="Clear todolost"
                                     class="clear_todolist_button todo_list__configuration__button"
                                 >
                                     Clear Todolist
                                 </button>
                                 <button
+                                    aria-label="Restore default todos"
+                                    title="Restore default todos and website theme"
                                     class="restore_default_button todo_list__configuration__button"
                                 >
                                     Restore Default Todos
